@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAT APP</title>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="js/client.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <img class="logo"src="https://img.icons8.com/pastel-glyph/512/000000/chat.png" alt="NIL">
+    </nav>
+    <div id="you" style="text-align: center;font-size: large;color: white;"></div>
+    <div class="container">
+        <!-- <div class="message left">ARPAN:how are you</div>
+        <div class="message right">ROHAN:I am fine</div>
+        <img src="image.jpg" alt="" class="img right">
+        <img src="image.jpg" alt="" class="img left"> -->
+    </div>
+    <div class="send">
+        <form action="#"id="send-container" enctype="multipart/form-data">
+            <input type="text" name="messageInp" id="messageInp"><br>
+            <h1>input image</h1>
+            <input type="file" name="" id="image">
+            <div name="room_list"id="room">
+                <div style="padding: 0.1%; margin: 0.1%;text-align: center;font-size: large; text-decoration: underline;">USERS</div>
+                <input type="checkbox" name="all"  id="all">ALL<br>
+            </div>
+            <button class="btn"type="submit">send</button>
+        </form>
+    </div>
+</body>
+</html>

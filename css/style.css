@@ -1,0 +1,107 @@
+.logo{
+    display: block;
+    margin: auto;
+    width: 8%;
+    height: 8%;
+}
+body{
+    background-image: linear-gradient(rgb(110,40,240),rgb(255,255,255));
+    height: 100%;
+}
+.container{
+    background-image: linear-gradient(rgb(255,255,255),rgb(35, 247, 7));
+    max-width: 80%;
+    margin: auto;
+    background-color: aqua;
+    height: 60vh;
+    padding: 1%;
+    overflow-y: scroll;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+.message{
+    font:inherit;
+    background-color: rgb(47, 255, 193);
+    width: 24%;
+    padding: 2%;
+    margin:1% 1%;
+    border: 1px solid black;
+    border-radius: 40%;
+    text-align: center;
+}
+.img{
+    max-width: 30%;
+    max-height: fit-content;
+    padding: 2%;
+    margin:1% 1%;
+}
+.left{
+    float: left;
+    clear: both;
+}
+.right{
+    float: right;
+    clear: both;
+}
+.mid{
+    float: left;
+    background-color: rgb(252, 205, 143);
+    clear: both;
+}
+#send-container{
+    display: block;
+    margin: auto;
+    text-align: center;
+    height: auto;
+}
+#messageInp{
+    text-align: center;
+    margin: auto;
+    display: block;
+    width: 80%;
+    border: 3px solid green;
+    height: 20px;
+}
+.btn{
+    font-size: large;
+    cursor: pointer;
+    border:2px solid black ;
+    background-color: green;
+    height: 34px;
+    width: 100px;
+    border-radius: 50%;
+    text-align: center;
+    margin: 1%;
+}
+.btn:hover{
+    background-color: crimson;
+    color: black
+}
+.btn:onclick{
+    background-color: rgb(92, 12, 240);
+    color: rgb(247, 244, 244)
+}
+#room{
+    background-image: linear-gradient(rgb(255,255,255),rgb(250, 6, 120));
+    max-width: 30%;
+    margin: auto;
+    background-color: aqua;
+    height: 10vh;
+    padding: 1%;
+    overflow-y: scroll;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    text-align: left;
+}
+#image{
+    text-align: center;
+    margin: auto;
+    display: block;
+    width: 50%;
+    border: 3px solid green;
+    height: 20px;
+}
