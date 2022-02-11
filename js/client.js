@@ -5,8 +5,11 @@ const imageinput=document.getElementById("image");
 const messageContainer=document.querySelector(".container");
 const room_container=document.getElementById("room");
 var userlist=[];
+const delete_element=(id)=>{
+    var element=document.getElementsByClassName(id)[0];
+    element.remove();
+}
 const append_img=(image,position)=>{
-    console.log(image);
     const messageElement=document.createElement('img');
     messageElement.src=image;
     messageElement.classList.add('img');
@@ -21,14 +24,19 @@ const append=(message,position)=>{
     messageContainer.append(messageElement);
 }
 const append_user=(username)=>{
+    const final=document.createElement('div');
+    final.classList.add(username);
     const userElement=document.createElement('input');
+    const text=document.createElement('label');
     userElement.type="checkbox";
     userElement.classList.add('user');
     userElement.id=username;
-    room_container.append(userElement);
-    room_container.append(username);
-    var e=document.createElement('br');
-    room_container.append(e);
+    text.innerText=username;
+    final.append(userElement);
+    final.append(text);
+    // var e=document.createElement('br');
+    // final.append(e);
+    room_container.append(final);
 }
 form.addEventListener('submit',(e)=>{
     const message=messageInput.value;
@@ -37,7 +45,6 @@ form.addEventListener('submit',(e)=>{
         var imageUrl=URL.createObjectURL(image);
     }
     message_send=[message,imageUrl];
-    console.log(message_send);
     append(`you:${message}`,'right');
     if(image!=null){
         append_img(URL.createObjectURL(image),'right');
@@ -45,7 +52,6 @@ form.addEventListener('submit',(e)=>{
     var room=[]
     var all=document.getElementById("all");
     if(all.checked==true){
-        console.log("hello");
         socket.emit('send',message_send,room);
     }
     else{
@@ -55,7 +61,6 @@ form.addEventListener('submit',(e)=>{
                 room.push(user[i].id);
             }
         }
-        console.log(room);
         socket.emit('send',message_send,room);
     }
     room=[];
@@ -63,7 +68,6 @@ form.addEventListener('submit',(e)=>{
 });
 
 var username=prompt("Enter your name:");
-console.log(username)
 var you=document.getElementById("you");
 you.innerHTML=username;
 socket.emit('new_user_joined',username);
@@ -75,15 +79,16 @@ socket.on("get_user_list",users_names=>{
 });
 
 socket.on('user_joined',data=>{
-    console.log("hello");
     append(`${data} joined the chat`,'mid');
     append_user(data);
 })
 socket.on('receive',data=>{
-    console.log("hello");
     append(`${data.name}:${data.message[0]}`,'left');
     if(data.message[1]!=null){
-        console.log(data.message[1]);
         append_img(data.message[1],'left');
     }
+})
+socket.on('user_disconnected',(username)=>{
+    delete_element(username);
+    append(`${username} left the chat`,'left');
 })
